@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Deens Academy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: #6f6fe1;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: white;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .settings {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+        .settings img {
+            width: 40px;
+            height: 40px;
+        }
+        .settings h4 {
+            margin: 0;
+            margin-left: 10px;
+        }
+        .lol {
+            display: block;
+            margin: 10px auto;
+            border: 2px solid #9999FF;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            padding: 10px 0;
+            width: 80%;
+            background-color: #ccccff;
+        }
+        .lol:hover {
+            background-color: #bbbbee;
+        }
+        .buttons {
+            text-align: center;
+            width: 100%;
+        }
+        .buttons img {
+            max-width: 100%;
+            height: auto;
+        }
+        button {
+            background-color: #ccccff;
+            font-size: larger;
+            border: none;
+            border-radius: 15px;
+            padding: 10px 20px;
+            width: 100%;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+        .attendance-form form {
+            width: 100%;
+        }
+        .attendance-form form input[type="text"],
+        .attendance-form form input[type="date"],
+        .attendance-form form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .container {
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0%; 
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: darkblue;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: darkblue;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #fff;
+            color: white;
+        }
+        th {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border-right: 1px solid #fff;
+            text-align: center;
+        }
+        td {
+            border-right: 1px solid #fff;
+        }
+        .green {
+            background-color: green;
+        }
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="dashboard" class="container">
+        <div class="header">
+            <div class="settings">
+                <a id="openSettings" href="#"><img src='settings.png'></a>
+                <h4>Settings</h4>
+            </div>
+            <h2>Dashboard</h2>
+        </div>
+        <img src="deens.png" class="buttons">
+        <div class="buttons">
+            <a class="lol" href="#" id="fillAttendanceBtn"><button type="button">Fill Attendance</button></a><br>
+            <a class="lol" href="#" id="ContactParentsBtn"><button type="button">Contact Parents</button></a><br>
+            <a class="lol" href="page2.html" ><button type="button">Sign Out</button></a>
+        </div>
+        <img src="bus.png" class="buttons">
+    </div>
+
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <!-- Content from index2.html starts here -->
+            <div class="sidenav">
+                <div class="Header">
+                    <div class="goback">
+                        <a href="#" id="goBackLink"><img src='settings.png'></a>
+                    </div>
+                    <h2>Settings</h2>
+                </div>
+                <h3>Language: </h3>
+                <div class="options">
+                    <input type="radio" id="option1" name="option" value="option1">
+                    <label for="option1">Kannada</label>
+                    <input type="radio" id="option2" name="option" value="option2">
+                    <label for="option2">Hindi</label>
+                    <input type="radio" id="option3" name="option" value="option3">
+                    <label for="option3">English</label>
+                    <input type="radio" id="option4" name="option" value="option4">
+                    <label for="option4">Telugu</label>
+                </div>
+            </div>
+            <div class="main">
+            </div>
+            <!-- Content from index2.html ends here -->
+        </div>
+    </div>
+
+    <div id="attendancePage" class="hidden container">
+        <!-- Content from index3.html starts here -->
+        <div class="container">
+            <a href="final.html">
+                <img src="your_image.jpg" alt="Image" style="max-width: 100px;">
+            </a>
+            <table>
+                <tr>
+                    <th>Student</th>
+                    <th>Attendance</th>
+                </tr>
+                <tr>
+                    <td>Student 1</td>
+                    <td>
+                        <button class="button green">Present</button>
+                        <button class="button red">Absent</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Student 2</td>
+                    <td>
+                        <button class="button green">Present</button>
+                        <button class="button red">Absent</button>
+                    </td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </table>
+        </div>
+        <!-- Content from index3.html ends here -->
+    </div>
+
+    <div id="ContactPage" class="hidden container">
+        <!-- Content from index3.html starts here -->
+        <div class="container">
+            <a href="final.html">
+                <img src="your_image.jpg" alt="Image" style="max-width: 100px;">
+            </a>
+            <table>
+                <tr>
+                    <th>Student</th>
+                    <th>Contact</th>
+                </tr>
+                <tr>
+                    <td>Student 1</td>
+                    <td>
+                        <button class="button green">Parent1</button>
+                        <button class="button red">Parent2</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Student 2</td>
+                    <td>
+                        <button class="button green">Parent1</button>
+                        <button class="button red">Parent2</button>
+                    </td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </table>
+        </div>
+        <!-- Content from index3.html ends here -->
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
